@@ -1,0 +1,17 @@
+workflows:
+  ios_emulator_build:
+    name: iOS Emulator Build
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter pub get
+      - name: Build for iOS Simulator
+        script: |
+          flutter build ios --simulator
+    artifacts:
+      - build/ios/iphonesimulator/*.app # This .app file is compatible with the iOS emulator
+
